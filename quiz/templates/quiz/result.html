@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'quiz/style.css' %}">
+
+<div class="container">
+    <h1>Résultat</h1>
+
+    <p>Tu as fait {{ score }} / {{ total }}</p>
+
+    {% if score == total %}
+        <p>🔥 Parfait !</p>
+    {% elif score > 0 %}
+        <p>👍 Pas mal !</p>
+    {% else %}
+        <p>😅 Essaie encore !</p>
+    {% endif %}
+
+    <a href="{% url 'quiz_index' %}">
+        <button>Rejouer</button>
+    </a>
+</div>
