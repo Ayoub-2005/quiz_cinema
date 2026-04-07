@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Cinéma</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn {
+            background: #ff4b2b;
+            padding: 15px 30px;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ff416c;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🎬 Quiz Cinéma</h1>
+    <p>Teste tes connaissances sur les films</p>
+
+    <a href="{% url 'start_quiz' %}" class="btn">
+        ▶ Commencer le quiz
+    </a>
+</div>
+
+</body>
+</html>

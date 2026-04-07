@@ -1,20 +1,85 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'quiz/style.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Résultat</title>
 
-<div class="container">
-    <h1>Résultat</h1>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #232526, #414345);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial;
+            color: white;
+        }
 
-    <p>Tu as fait {{ score }} / {{ total }}</p>
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
 
-    {% if score == total %}
-        <p>🔥 Parfait !</p>
-    {% elif score > 0 %}
-        <p>👍 Pas mal !</p>
-    {% else %}
-        <p>😅 Essaie encore !</p>
-    {% endif %}
+        h1 {
+            font-size: 2.5em;
+        }
 
-    <a href="{% url 'quiz_index' %}">
-        <button>Rejouer</button>
-    </a>
+        .score {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn {
+            background: #ff4b2b;
+            padding: 12px 25px;
+            border-radius: 20px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ff416c;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🎉 Résultat</h1>
+
+    <div class="score">
+        {{ score }} / {{ total }}
+    </div>
+
+    <hr>
+
+    <h2>Correction</h2>
+
+    {% for r in results %}
+        <div style="margin-bottom:20px;">
+            <strong>{{ r.question }}</strong><br>
+
+            ✅ Bonne réponse : {{ r.correct }}<br>
+
+            ❌ Ta réponse : {{ r.user }}<br>
+
+            {% if r.is_correct %}
+                <span style="color:lightgreen;">✔ Correct</span>
+            {% else %}
+                <span style="color:red;">✘ Faux</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+{{ score }} / {{ total }}
+    <a href="/" class="btn">Rejouer</a>
 </div>
+
+</body>
+</html>
